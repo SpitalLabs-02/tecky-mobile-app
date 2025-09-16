@@ -31,5 +31,9 @@ export const MyColors = {
   textColor: "#141B34",
   textColor2: '#A5A5A5',
   textColor3: '#98A2B3',
-  inputBorderColor: '#B0C0DF'
+  inputBorderColor: '#B0C0DF',
+  progressTitleColor: '#1D2739',
+  inactiveProgressColor: '#EEEEEE',
+  progressTextColor: '#475367',
+  subTextColor: '#344B9F'
 }

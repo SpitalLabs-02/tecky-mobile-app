@@ -1,14 +1,17 @@
 // @ts-nocheck
+import ProgessBar from "@/components/ProgessBar";
 import { MyColors } from "@/constants/Colors";
 import Fontisto from "@expo/vector-icons/Fontisto";
+import { Link } from "expo-router";
 import React, { useState } from "react";
 import {
-    Image,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
 const Information = () => {
@@ -41,59 +44,63 @@ const Information = () => {
     <View style={styles.container}>
       <Image source={require("../assets/images/tecky-logo.png")} />
 
+      <ProgessBar />
       <Text style={styles.topText}>Kindly input the following</Text>
 
-      <View style={styles.inputContainer}>
-        <Text style={styles.questionText}>NAME</Text>
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollStyle}>
+        <View style={styles.inputContainer}>
+          <Text style={styles.questionText}>NAME</Text>
 
-        <TextInput
-          placeholder="Enter full name"
-          style={styles.input}
-          keyboardType="default"
-          value={fullName}
-          onChangeText={setFullName}
-        />
+          <TextInput
+            placeholder="Enter full name"
+            style={styles.input}
+            keyboardType="default"
+            value={fullName}
+            onChangeText={setFullName}
+          />
 
-        <Text style={styles.questionText}>EMAIL</Text>
+          <Text style={styles.questionText}>EMAIL</Text>
 
-        <TextInput
-          placeholder="Enter email address"
-          style={styles.input}
-          keyboardType="email-address"
-          value={email}
-          onChangeText={setEmail}
-        />
-      </View>
-
-      {questions.map((data, index) => (
-        <View key={index} style={styles.mainOptionContainer}>
-          <Text>
-            {index + 1}. {data.text}
-          </Text>
-          {data.options.map((option, j) => {
-            const selected = singleAnswer[index] === option;
-
-            return (
-              <TouchableOpacity
-                key={j}
-                onPress={() => handleSelect(index, option)}
-                style={styles.optionContainer}
-              >
-                <Fontisto
-                  name={selected ? "radio-btn-active" : "radio-btn-passive"}
-                  size={18}
-                  color="black"
-                />
-                <Text>{option}</Text>
-              </TouchableOpacity>
-            );
-          })}
+          <TextInput
+            placeholder="Enter email address"
+            style={styles.input}
+            keyboardType="email-address"
+            value={email}
+            onChangeText={setEmail}
+          />
         </View>
-      ))}
 
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Next</Text>
-      </TouchableOpacity>
+        {questions.map((data, index) => (
+          <View key={index} style={styles.mainOptionContainer}>
+            <Text style={styles.questionText}>
+              {data.text}
+              {/* {index + 1}. {data.text} */}
+            </Text>
+            {data.options.map((option, j) => {
+              const selected = singleAnswer[index] === option;
+
+              return (
+                <TouchableOpacity
+                  key={j}
+                  onPress={() => handleSelect(index, option)}
+                  style={styles.optionContainer}
+                >
+                  <Fontisto
+                    name={selected ? "radio-btn-active" : "radio-btn-passive"}
+                    size={18}
+                    color="black"
+                  />
+                  <Text>{option}</Text>
+                </TouchableOpacity>
+              );
+            })}
+          </View>
+        ))}
+
+        <Link href={"/information2"} style={styles.button}>
+          <Text style={styles.buttonText}>Next</Text>
+        </Link>
+      </ScrollView>
     </View>
   );
 };
@@ -113,7 +120,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   questionText: {
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: "regular",
     color: MyColors.textColor,
     marginTop: 4,
@@ -163,4 +170,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "600",
   },
+  scrollStyle:{
+    paddingBottom: 60
+  }
 });
