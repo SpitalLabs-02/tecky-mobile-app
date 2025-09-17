@@ -19,13 +19,14 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack initialRouteName='information2'>
+      <Stack initialRouteName='information4'>
         <Stack.Screen name='index' options={{headerShown: false}} />
         <Stack.Screen name='how-it-works' options={{headerShown: false}} />
         <Stack.Screen name='information' options={{headerShown: false}} />
         <Stack.Screen name='information2' options={{headerShown: false}} />
         <Stack.Screen name='information3' options={{headerShown: false}} />
         <Stack.Screen name='information4' options={{headerShown: false}} />
+        <Stack.Screen name='information5' options={{headerShown: false}} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>

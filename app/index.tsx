@@ -11,6 +11,14 @@ const Index = () => {
   }
   return (
     <View style={styles.container}>
+      {/* THIS BRANCH BELONGS TO DANIEL */}
+      {/* THIS BRANCH BELONGS TO DANIEL */}
+      {/* THIS BRANCH BELONGS TO DANIEL */}
+      {/* THIS BRANCH BELONGS TO DANIEL */}
+      {/* THIS BRANCH BELONGS TO DANIEL */}
+      {/* THIS BRANCH BELONGS TO DANIEL */}
+      {/* THIS BRANCH BELONGS TO DANIEL */}
+      {/* THIS BRANCH BELONGS TO DANIEL */}
       <Swiper
         paginationStyle={styles.paginationStyle}
         dotStyle={styles.inActiveDot}
