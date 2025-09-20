@@ -6,35 +6,35 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { Link, useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+    Image,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
 } from "react-native";
 
-const Information5 = () => {
+const Information6 = () => {
   const router = useRouter();
   // State that will handle the option selection
   const [multipleAnswer, setMultipleAnswer] = useState({});
 
   const questions = [
     {
-      text: "I am comfortable with learning complex tech skills.",
+      text: "I want to acquire tech skills that are currently trending in the industry.",
       options: [1, 2, 3, 4, 5],
     },
 
     {
-      text: "I enjoy learning through hands-on experiences and experimentation.",
+      text: "Job security and stability are essential factors when choosing a tech skill.",
       options: [1, 2, 3, 4, 5],
     },
     {
-      text: "I prefer learning tech skills that have a clear, step-by-step approach.",
+      text: "I am interested in tech skills that have a high potential for career advancement.",
       options: [1, 2, 3, 4, 5],
     },
     {
-      text: "Having a tech skill that is in high demand in the job market is crucial to me.",
+      text: "I want to acquire tech skills that are widely recognized and respected in the industry.",
       options: [1, 2, 3, 4, 5],
     },
   ];
@@ -58,7 +58,7 @@ const Information5 = () => {
   };
 
   const handleBackButton = () => {
-    router.push("/information3");
+    router.push("/information5");
   };
 
   return (
@@ -77,8 +77,7 @@ const Information5 = () => {
             <View key={index} style={styles.mainOptionContainer}>
               {index === 3 && (
                 <Text style={styles.questionText}>
-                  On a scale of 1-5 (1 being the lowest and 5 the highest)
-                  kindly rank these statements in their order of correctness)
+                
                 </Text>
               )}
               <Text style={[styles.questionText, { textTransform: "none" }]}>
@@ -128,7 +127,7 @@ const Information5 = () => {
           </TouchableOpacity>
 
           {/* Next */}
-          <Link href={"/information6"} style={styles.button}>
+          <Link href={"/information7"} style={styles.button}>
             <Text style={styles.buttonText}>Next</Text>
           </Link>
         </View>
@@ -137,7 +136,7 @@ const Information5 = () => {
   );
 };
 
-export default Information5;
+export default Information6;
 
 const styles = StyleSheet.create({
   container: {

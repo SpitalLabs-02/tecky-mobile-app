@@ -6,35 +6,35 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { Link, useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+    Image,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
 } from "react-native";
 
-const Information5 = () => {
+const Information7 = () => {
   const router = useRouter();
   // State that will handle the option selection
   const [multipleAnswer, setMultipleAnswer] = useState({});
 
   const questions = [
     {
-      text: "I am comfortable with learning complex tech skills.",
+      text: "Having a tech skill that can be applied across multiple industries is important to me.",
       options: [1, 2, 3, 4, 5],
     },
 
     {
-      text: "I enjoy learning through hands-on experiences and experimentation.",
+      text: "I prefer tech skills that can be used in various contexts.",
       options: [1, 2, 3, 4, 5],
     },
     {
-      text: "I prefer learning tech skills that have a clear, step-by-step approach.",
+      text: "Acquiring tech skills that can be transferred to different domains is valuable to me.",
       options: [1, 2, 3, 4, 5],
     },
     {
-      text: "Having a tech skill that is in high demand in the job market is crucial to me.",
+      text: "I am interested in tech skills that can be adapted to new and emerging technologies.",
       options: [1, 2, 3, 4, 5],
     },
   ];
@@ -58,7 +58,7 @@ const Information5 = () => {
   };
 
   const handleBackButton = () => {
-    router.push("/information3");
+    router.push("/information6");
   };
 
   return (
@@ -75,10 +75,9 @@ const Information5 = () => {
         <View style={{ marginTop: 20 }}>
           {questions.map((data, index) => (
             <View key={index} style={styles.mainOptionContainer}>
-              {index === 3 && (
+              {index === 0 && (
                 <Text style={styles.questionText}>
-                  On a scale of 1-5 (1 being the lowest and 5 the highest)
-                  kindly rank these statements in their order of correctness)
+                  On a scale of 1-5 (1 being the lowest and 5 the highest) kindly rank these statements in their order of correctness
                 </Text>
               )}
               <Text style={[styles.questionText, { textTransform: "none" }]}>
@@ -128,7 +127,7 @@ const Information5 = () => {
           </TouchableOpacity>
 
           {/* Next */}
-          <Link href={"/information6"} style={styles.button}>
+          <Link href={"/information8"} style={styles.button}>
             <Text style={styles.buttonText}>Next</Text>
           </Link>
         </View>
@@ -137,7 +136,7 @@ const Information5 = () => {
   );
 };
 
-export default Information5;
+export default Information7;
 
 const styles = StyleSheet.create({
   container: {
