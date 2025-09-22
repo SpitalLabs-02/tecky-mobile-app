@@ -30,6 +30,7 @@ export default function RootLayout() {
         <Stack.Screen name='information6' options={{headerShown: false}} />
         <Stack.Screen name='information7' options={{headerShown: false}} />
         <Stack.Screen name='information8' options={{headerShown: false}} />
+        <Stack.Screen name='information9' options={{headerShown: false}} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>

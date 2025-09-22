@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
   onboardingContainer: {
-    paddingTop: 30,
+    paddingTop: 80,
     paddingHorizontal: 20,
   },
   activeDot: {
