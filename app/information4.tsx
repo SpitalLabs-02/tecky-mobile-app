@@ -1,10 +1,12 @@
 // @ts-nocheck
+import { responseAtom } from "@/atoms/responseAtom";
 import ProgessBar from "@/components/ProgessBar";
+import MultipleResponse from "@/components/Responses/MultipleResponse";
 import { MyColors } from "@/constants/Colors";
 import Feather from "@expo/vector-icons/Feather";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { Link, useRouter } from "expo-router";
-import React, { useState } from "react";
+import { useAtom } from "jotai";
+import React from "react";
 import {
   Image,
   ScrollView,
@@ -16,46 +18,38 @@ import {
 
 const Information4 = () => {
   const router = useRouter();
-  // State that will handle the option selection
-  const [multipleAnswer, setMultipleAnswer] = useState({});
+  const [response, setResponses] = useAtom(responseAtom);
 
   const questions = [
     {
+      id: "1",
       text: "I am interested in understanding how technology can improve people's lives and experiences, thereby enabling to make positive impacts or changes in the Society",
       options: [1, 2, 3, 4, 5],
+      rowResponses: true,
     },
 
     {
+      id: "2",
       text: "I enjoy collaborating with others to develop innovative tech solutions.",
       options: [1, 2, 3, 4, 5],
+      rowResponses: true,
     },
     {
+      id: "3",
       text: "I am willing to dedicate a significant amount of time to learn a new tech skill.",
       options: [1, 2, 3, 4, 5],
+      rowResponses: true,
+      extraText:
+        "On a scale of 1-5 (1 being the lowest and 5 the highest) kindly rank these statements in their order of correctness)",
     },
     {
+      id: "4",
       text: "I prefer tech skills with a gentle learning curve.",
       options: [1, 2, 3, 4, 5],
+      rowResponses: true,
     },
   ];
 
-  const handleSelect = (questionIndex: number, option: string) => {
-    setMultipleAnswer((previous) => {
-      const currentSelection = previous[questionIndex] || [];
-
-      if (currentSelection.includes(option)) {
-        return {
-          ...previous,
-          [questionIndex]: currentSelection.filter((ans) => ans !== option),
-        };
-      } else {
-        return {
-          ...previous,
-          [questionIndex]: [...currentSelection, option],
-        };
-      }
-    });
-  };
 
   const handleBackButton = () => {
     router.push("/information3");
@@ -71,51 +65,14 @@ const Information4 = () => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollStyle}
       >
-        {/* QUESTION AND OPTION SECTION */}
-        <View style={{ marginTop: 20 }}>
-          {questions.map((data, index) => (
-            <View key={index} style={styles.mainOptionContainer}>
-              {index === 2 && (
-                <Text style={styles.questionText}>
-                  On a scale of 1-5 (1 being the lowest and 5 the highest)
-                  kindly rank these statements in their order of correctness)
-                </Text>
-              )}
-              <Text style={[styles.questionText, { textTransform: "none" }]}>
-                {data.text}
-                {/* {index + 1}. {data.text} */}
-              </Text>
-
-              <View style={styles.mainOptionContainer2}>
-                {data.options.map((option, j) => {
-                  const selected = multipleAnswer[index]?.includes(option);
-
-                  return (
-                    <TouchableOpacity
-                      key={j}
-                      onPress={() => handleSelect(index, option)}
-                      style={[
-                        styles.optionContainer,
-                        { flexDirection: "column", gap: 5 },
-                      ]}
-                    >
-                      <MaterialCommunityIcons
-                        name={
-                          selected
-                            ? "checkbox-intermediate"
-                            : "checkbox-blank-outline"
-                        }
-                        size={24}
-                        color="black"
-                      />
-                      <Text>{option}</Text>
-                    </TouchableOpacity>
-                  );
-                })}
-              </View>
-            </View>
-          ))}
-        </View>
+        <MultipleResponse
+          questions={questions}
+          initialAnswers={response}
+          onChange={(answers) =>
+            setResponses((prev) => ({ ...prev, ...answers }))
+          }
+          inputStyle={styles.input}
+        />
 
         {/* The back and next container */}
         <View style={styles.backNextContainer}>

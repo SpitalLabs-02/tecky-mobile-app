@@ -1,59 +1,53 @@
 // @ts-nocheck
+import { responseAtom } from "@/atoms/responseAtom";
 import ProgessBar from "@/components/ProgessBar";
+import MultipleResponse from "@/components/Responses/MultipleResponse";
 import { MyColors } from "@/constants/Colors";
 import Feather from "@expo/vector-icons/Feather";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { Link, useRouter } from "expo-router";
-import React, { useState } from "react";
+import { useAtom } from "jotai";
+import React from "react";
 import {
-    Image,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
 } from "react-native";
 
 const Information3 = () => {
   const router = useRouter();
-  // State that will handle the option selection
-  const [multipleAnswer, setMultipleAnswer] = useState({});
-  const [techApplication, setTechApplication] = useState("");
+
+  const [response, setResponses] = useAtom(responseAtom);
+  
 
   const questions = [
     {
+      id: '1',
       text: "I am fascinated by the potential of utilizing technology to transform human lives, businesses, industries, and societies.",
       options: [1, 2, 3, 4, 5],
+      type: 'choice',
+      rowResponses: true
     },
 
     {
+      id: '2',
       text: "I enjoy learning and exploring new & emerging technologies, applying my creativity to developing new tech devices & gizmos, and proffering innovative solutions.",
       options: [1, 2, 3, 4, 5],
+      type: 'choice',
+      rowResponses: true
     },
     {
+      id: '3',
       text: "I am passionate about using technology to address human, societal, and environmental challenges (real world problems).",
       options: [1, 2, 3, 4, 5],
+      type: 'choice',
+      rowResponses: true
     },
   ];
 
-  const handleSelect = (questionIndex: number, option: string) => {
-    setMultipleAnswer((previous) => {
-      const currentSelection = previous[questionIndex] || [];
 
-      if (currentSelection.includes(option)) {
-        return {
-          ...previous,
-          [questionIndex]: currentSelection.filter((ans) => ans !== option),
-        };
-      } else {
-        return {
-          ...previous,
-          [questionIndex]: [...currentSelection, option],
-        };
-      }
-    });
-  };
 
   const handleBackButton = () => {
     router.push("/information2");
@@ -69,64 +63,14 @@ const Information3 = () => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollStyle}
       >
-        {/* INPUT CONTAINER/SECTION */}
-        <View style={{ marginTop: 20 }}>
-          <Text style={styles.questionText}>
-            What are your favorite Tech applications?
-          </Text>
-
-          <TextInput
-            placeholder="Your answer"
-            style={styles.input}
-            keyboardType="default"
-            value={techApplication}
-            onChangeText={setTechApplication}
-          />
-        </View>
-
-        {/* QUESTION AND OPTION SECTION */}
-        <View style={{ marginTop: 20 }}>
-          <Text style={styles.questionText}>
-            On a scale of 1-5 (1 being the lowest and 5 the highest) kindly rank
-            these statements in their order of correctness)
-          </Text>
-          {questions.map((data, index) => (
-            <View key={index} style={styles.mainOptionContainer}>
-              <Text style={[styles.questionText, { textTransform: "none" }]}>
-                {data.text}
-                {/* {index + 1}. {data.text} */}
-              </Text>
-
-              <View style={styles.mainOptionContainer2}>
-                {data.options.map((option, j) => {
-                  const selected = multipleAnswer[index]?.includes(option);
-
-                  return (
-                    <TouchableOpacity
-                      key={j}
-                      onPress={() => handleSelect(index, option)}
-                      style={[
-                        styles.optionContainer,
-                        { flexDirection: "column", gap: 5 },
-                      ]}
-                    >
-                      <MaterialCommunityIcons
-                        name={
-                          selected
-                            ? "checkbox-intermediate"
-                            : "checkbox-blank-outline"
-                        }
-                        size={24}
-                        color="black"
-                      />
-                      <Text>{option}</Text>
-                    </TouchableOpacity>
-                  );
-                })}
-              </View>
-            </View>
-          ))}
-        </View>
+        <MultipleResponse
+          questions={questions}
+          initialAnswers={response}
+          onChange={(answers) =>
+            setResponses((prev) => ({ ...prev, ...answers }))
+          }
+          inputStyle={styles.input}
+        />
 
         {/* The back and next container */}
         <View style={styles.backNextContainer}>

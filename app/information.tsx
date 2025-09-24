@@ -1,44 +1,47 @@
 // @ts-nocheck
+import { responseAtom } from "@/atoms/responseAtom";
 import ProgessBar from "@/components/ProgessBar";
+import MultipleResponse from "@/components/Responses/MultipleResponse";
 import { MyColors } from "@/constants/Colors";
-import Fontisto from "@expo/vector-icons/Fontisto";
 import { Link } from "expo-router";
-import React, { useState } from "react";
+import { useAtom } from "jotai";
+import React from "react";
 import {
   Image,
   ScrollView,
   StyleSheet,
   Text,
-  TextInput,
-  TouchableOpacity,
-  View,
+  View
 } from "react-native";
 
 const Information = () => {
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-
-  // State that will handle the option selection
-  const [singleAnswer, setSingleAnswer] = useState({});
+  const [response, setResponses] = useAtom(responseAtom);
 
   const questions = [
     {
+      id: "1",
+      inputTitle: "NAME",
+      type: "input",
+    },
+    {
+      id: "2",
+      inputTitle: "EMAIL",
+      type: "input",
+    },
+    {
+      id: "3",
       text: "AGE",
       options: ["15-21 years", "22-34 years", "35 and above"],
+      type: "choice",
     },
 
     {
+      id: "4",
       text: "HOW MUCH OF TECH DO YOU KNOW?",
       options: [" Very well", "Well", "Not very", "Neutral"],
+      type: "choice",
     },
   ];
-
-  const handleSelect = (questionIndex: number, option: string) => {
-    setSingleAnswer((previous) => ({
-      ...previous, //Keep previous answers
-      [questionIndex]: option, // update only this questions answer
-    }));
-  };
 
   return (
     <View style={styles.container}>
@@ -47,8 +50,20 @@ const Information = () => {
       <ProgessBar />
       <Text style={styles.topText}>Kindly input the following</Text>
 
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollStyle}>
-        <View style={styles.inputContainer}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollStyle}
+      >
+        <MultipleResponse
+          questions={questions}
+          initialAnswers={response}
+          onChange={(answers) =>
+            setResponses((prev) => ({ ...prev, ...answers }))
+          }
+          inputStyle={styles.input}
+        />
+
+        {/* <View style={styles.inputContainer}>
           <Text style={styles.questionText}>NAME</Text>
 
           <TextInput
@@ -74,7 +89,7 @@ const Information = () => {
           <View key={index} style={styles.mainOptionContainer}>
             <Text style={styles.questionText}>
               {data.text}
-              {/* {index + 1}. {data.text} */}
+              
             </Text>
             {data.options.map((option, j) => {
               const selected = singleAnswer[index] === option;
@@ -95,7 +110,7 @@ const Information = () => {
               );
             })}
           </View>
-        ))}
+        ))} */}
 
         <Link href={"/information2"} style={styles.button}>
           <Text style={styles.buttonText}>Next</Text>
@@ -170,7 +185,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "600",
   },
-  scrollStyle:{
-    paddingBottom: 60
-  }
+  scrollStyle: {
+    paddingBottom: 60,
+  },
 });
