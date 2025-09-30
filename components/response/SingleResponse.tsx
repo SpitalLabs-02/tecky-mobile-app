@@ -2,12 +2,12 @@ import { MyColors } from "@/constants/Colors";
 import { Fontisto } from "@expo/vector-icons";
 import React, { useState } from "react";
 import {
-    StyleSheet,
-    Text,
-    TextInput,
-    TextStyle,
-    TouchableOpacity,
-    View,
+  StyleSheet,
+  Text,
+  TextInput,
+  TextStyle,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
 interface Question {
@@ -27,7 +27,7 @@ interface QuestionnaireProps {
   inputStyle?: TextStyle;
 }
 
-const MultipleResponse: React.FC<QuestionnaireProps> = ({
+const SingleResponse: React.FC<QuestionnaireProps> = ({
   questions,
   initialAnswers = {},
   onChange,
@@ -103,7 +103,7 @@ const MultipleResponse: React.FC<QuestionnaireProps> = ({
   );
 };
 
-export default MultipleResponse;
+export default SingleResponse;
 
 const styles = StyleSheet.create({
   questionText: {

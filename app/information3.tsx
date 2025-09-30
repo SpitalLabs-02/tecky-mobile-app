@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { responseAtom } from "@/atoms/responseAtom";
 import ProgessBar from "@/components/ProgessBar";
-import MultipleResponse from "@/components/Responses/MultipleResponse";
+import SingleResponse from "@/components/response/SingleResponse";
 import { MyColors } from "@/constants/Colors";
 import Feather from "@expo/vector-icons/Feather";
 import { Link, useRouter } from "expo-router";
@@ -63,7 +63,7 @@ const Information3 = () => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollStyle}
       >
-        <MultipleResponse
+        <SingleResponse
           questions={questions}
           initialAnswers={response}
           onChange={(answers) =>
