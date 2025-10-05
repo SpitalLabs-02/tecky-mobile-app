@@ -1,10 +1,12 @@
-// @ts-nocheck
+
+import { responseAtom } from "@/atoms/responseAtom";
 import ProgessBar from "@/components/ProgessBar";
+import SingleResponse from "@/components/response/SingleResponse";
 import { MyColors } from "@/constants/Colors";
 import Feather from "@expo/vector-icons/Feather";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { Link, useRouter } from "expo-router";
-import React, { useState } from "react";
+import { useAtom } from "jotai";
+import React from "react";
 import {
     Image,
     ScrollView,
@@ -13,119 +15,79 @@ import {
     TouchableOpacity,
     View,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+
 
 const Information8 = () => {
   const router = useRouter();
-  const [multipleAnswer, setMultipleAnswer] = useState({});
+
+  const [response, setResponses] = useAtom(responseAtom);
 
   const questions = [
     {
+      id: "1",
       text: "I want to acquire tech skills that can be applied to both personal and professional projects.",
       options: [1, 2, 3, 4, 5],
+      rowResponses: true,
     },
     {
+      id: "2",
       text: "Advancing to leadership or specialized roles in the tech industry is a key career goal for me.",
       options: [1, 2, 3, 4, 5],
+      rowResponses: true,
     },
     {
+      id: "3",
       text: "Continuous learning and professional development are essential for my tech career.",
       options: [1, 2, 3, 4, 5],
+      rowResponses: true,
     },
     {
+      id: "4",
       text: "Acquiring tech skills that can lead to career growth and advancement is crucial to me.",
       options: [1, 2, 3, 4, 5],
+      rowResponses: true,
     },
     {
+      id: "5",
       text: "I am interested in tech skills that can be applied to entrepreneurial or startup ventures.",
       options: [1, 2, 3, 4, 5],
+      rowResponses: true,
     },
     {
+      id: "6",
       text: "I want to acquire tech skills that can be recognized and respected by industry leaders.",
       options: [1, 2, 3, 4, 5],
+      rowResponses: true,
     },
   ];
 
-  const handleSelect = (questionIndex: number, option: string) => {
-    setMultipleAnswer((previous) => {
-      const currentSelection = previous[questionIndex] || [];
-
-      if (currentSelection.includes(option)) {
-        return {
-          ...previous,
-          [questionIndex]: currentSelection.filter((ans) => ans !== option),
-        };
-      } else {
-        return {
-          ...previous,
-          [questionIndex]: [...currentSelection, option],
-        };
-      }
-    });
-  };
-
+ 
   const handleBackButton = () => {
     router.push("/information7");
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
-      <View style={styles.container}>
-        <Image source={require("../assets/images/tecky-logo.png")} />
+    <View style={styles.container}>
+      <Image source={require("../assets/images/tecky-logo.png")} />
 
-        <ProgessBar />
+      <ProgessBar />
 
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={styles.scrollStyle}
-        >
-          {/* QUESTION AND OPTION SECTION */}
-          <View style={{ marginTop: 20 }}>
-            {questions.map((data, index) => (
-              <View key={index} style={styles.mainOptionContainer}>
-                {index === 1 && (
-                  <Text style={styles.questionText}>
-                    On a scale of 1-5 (1 being the lowest and 5 the highest) kindly rank these statements in their order of correctness
-                  </Text>
-                )}
-                <Text style={[styles.questionText, { textTransform: "none" }]}>
-                  {data.text}
-                </Text>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollStyle}
+      >
+         <SingleResponse
+          questions={questions}
+          initialAnswers={response}
+          onChange={(answers) =>
+            setResponses((prev) => ({ ...prev, ...answers }))
+          }
+        
+        />
 
-                <View style={styles.mainOptionContainer2}>
-                  {data.options.map((option, j) => {
-                    const selected = multipleAnswer[index]?.includes(option);
-
-                    return (
-                      <TouchableOpacity
-                        key={j}
-                        onPress={() => handleSelect(index, option)}
-                        style={[
-                          styles.optionContainer,
-                          { flexDirection: "column", gap: 5 },
-                        ]}
-                      >
-                        <MaterialCommunityIcons
-                          name={
-                            selected
-                              ? "checkbox-intermediate"
-                              : "checkbox-blank-outline"
-                          }
-                          size={24}
-                          color="black"
-                        />
-                        <Text>{option}</Text>
-                      </TouchableOpacity>
-                    );
-                  })}
-                </View>
-              </View>
-            ))}
-          </View>
-        </ScrollView>
-
-        {/* Fixed Back and Next buttons at bottom */}
+        {/* The back and next container */}
         <View style={styles.backNextContainer}>
+          {/* Back button */}
           <TouchableOpacity style={styles.button2} onPress={handleBackButton}>
             <Feather name="arrow-left" size={24} color={MyColors.textColor} />
             <Text style={[styles.buttonText, { color: MyColors.textColor }]}>
@@ -133,12 +95,13 @@ const Information8 = () => {
             </Text>
           </TouchableOpacity>
 
+          {/* Next */}
           <Link href={"/information9"} style={styles.button}>
             <Text style={styles.buttonText}>Next</Text>
           </Link>
         </View>
-      </View>
-    </SafeAreaView>
+      </ScrollView>
+    </View>
   );
 };
 

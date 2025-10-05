@@ -19,7 +19,11 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === 'white' ? DarkTheme : DefaultTheme}>
+<<<<<<< Updated upstream
       <Stack initialRouteName='index'>
+=======
+      <Stack >
+>>>>>>> Stashed changes
         <Stack.Screen name='index' options={{headerShown: false}} />
         <Stack.Screen name='how-it-works' options={{headerShown: false}} />
         <Stack.Screen name='information' options={{headerShown: false}} />
