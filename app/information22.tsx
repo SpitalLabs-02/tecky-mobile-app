@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 import { responseAtom } from "@/atoms/responseAtom";
 import ProgessBar from "@/components/ProgessBar";
 import SingleResponse from "@/components/response/SingleResponse";
@@ -16,50 +16,49 @@ import {
     View,
 } from "react-native";
 
-const Information6 = () => {
+const Information22 = () => {
   const router = useRouter();
-<<<<<<< Updated upstream
- 
- const [response, setResponses] = useAtom(responseAtom);
-=======
-      const [response, setResponses] = useAtom(responseAtom);
->>>>>>> Stashed changes
+  const [response, setResponses] = useAtom(responseAtom);
 
   const questions = [
     {
       id: "1",
-      text: "I want to acquire tech skills that are currently trending in the industry.",
+      text: "I enjoy collaborating with others on telling stories",
       options: [1, 2, 3, 4, 5],
-      rowResponses: true,
+      rowResponses: true, 
+           
     },
 
     {
       id: "2",
-      text: "Job security and stability are essential factors when choosing a tech skill.",
+      text: "I am interested in using image capture and designs to tell stories and convey messages.",
       options: [1, 2, 3, 4, 5],
       rowResponses: true,
+      
+      
     },
     {
       id: "3",
-      text: "I am interested in tech skills that have a high potential for career advancement.",
-      options: [1, 2, 3, 4, 5],
-      rowResponses: true,
-    },
+      
+      text: "ANY OTHER THING YOU WOULD TO SHARE WITH US BORDERING ON TECH?",
+      
+        
+    },   
     {
       id: "4",
-      text: "I want to acquire tech skills that are widely recognized and respected in the industry.",
-      options: [1, 2, 3, 4, 5],
-      rowResponses: true,
-    },
+      
+      type: "input"
+      
+        
+    }, 
+    
+     
+    
   ];
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 
   const handleBackButton = () => {
-    router.push("/information5");
+    router.push("/information21");
   };
 
   return (
@@ -72,21 +71,13 @@ const Information6 = () => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollStyle}
       >
-<<<<<<< Updated upstream
-         <SingleResponse
-=======
         <SingleResponse
->>>>>>> Stashed changes
           questions={questions}
           initialAnswers={response}
           onChange={(answers) =>
             setResponses((prev) => ({ ...prev, ...answers }))
           }
-<<<<<<< Updated upstream
-        
-=======
           inputStyle={styles.input}
->>>>>>> Stashed changes
         />
 
         {/* The back and next container */}
@@ -100,8 +91,8 @@ const Information6 = () => {
           </TouchableOpacity>
 
           {/* Next */}
-          <Link href={"/information7"} style={styles.button}>
-            <Text style={styles.buttonText}>Next</Text>
+          <Link href={"/information23"} style={styles.button}>
+            <Text style={styles.buttonText}>Submit</Text>
           </Link>
         </View>
       </ScrollView>
@@ -109,21 +100,19 @@ const Information6 = () => {
   );
 };
 
-export default Information6;
+export default Information22;
 
 const styles = StyleSheet.create({
   container: {
     height: "100%",
     backgroundColor: "white",
     padding: 20,
-    marginTop: 30
-    
   },
   topText: {
     fontSize: 16,
     fontWeight: "regular",
     color: MyColors.textColor3,
-    marginTop: 20,
+    marginTop: 20, 
   },
   questionText: {
     fontSize: 12,

@@ -1,30 +1,92 @@
 // @ts-nocheck
+import { responseAtom } from "@/atoms/responseAtom";
+import ProgessBar from "@/components/ProgessBar";
+import SingleResponse from "@/components/response/SingleResponse";
 import { MyColors } from "@/constants/Colors";
-import { useRouter } from "expo-router";
+import Feather from "@expo/vector-icons/Feather";
+import { Link, useRouter } from "expo-router";
+import { useAtom } from "jotai";
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 const Information9 = () => {
   const router = useRouter();
+      const [response, setResponses] = useAtom(responseAtom);
 
-  const handleGoHome = () => {
-    router.push("/"); // navigates to index.tsx (home)
+  const questions = [
+    {
+      id: "1",
+      text: "HOW RELAXED ARE YOU HANDLING DATA?",
+      options: ["Very Relaxed", "Relaxed", "Not Relaxed", "Not Very Relaxed/Tensed", "Neutral"],
+      
+    },
+
+    {
+      id: "2",
+      text: "I enjoy working with numbers",
+      options: [1, 2, 3, 4, 5],
+      rowResponses: true,
+      extraText:
+        "On a scale of 1-5 (1 being the lowest and 5 the highest) kindly rank these statements in their order of correctness)",
+    },
+    {
+      id: "3",
+      text: "I am comfortable with mathematical concepts and statistical analysis",
+      options: [1, 2, 3, 4, 5],
+      rowResponses: true,
+    },
+   
+  ];
+
+
+
+  const handleBackButton = () => {
+    router.push("/information8");
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
-      <View style={styles.container}>
-        <Text style={styles.title}>Thank You!</Text>
-        <Text style={styles.subtitle}>
-          Thank you for your participation. Your input is highly appreciated.
-        </Text>
+    <View style={styles.container}>
+      <Image source={require("../assets/images/tecky-logo.png")} />
 
-        <TouchableOpacity style={styles.button} onPress={handleGoHome}>
-          <Text style={styles.buttonText}>Go to Home</Text>
-        </TouchableOpacity>
-      </View>
-    </SafeAreaView>
+      <ProgessBar />
+
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollStyle}
+      >
+        <SingleResponse
+          questions={questions}
+          initialAnswers={response}
+          onChange={(answers) =>
+            setResponses((prev) => ({ ...prev, ...answers }))
+          }
+          inputStyle={styles.input}
+        />
+
+        {/* The back and next container */}
+        <View style={styles.backNextContainer}>
+          {/* Back button */}
+          <TouchableOpacity style={styles.button2} onPress={handleBackButton}>
+            <Feather name="arrow-left" size={24} color={MyColors.textColor} />
+            <Text style={[styles.buttonText, { color: MyColors.textColor }]}>
+              Back
+            </Text>
+          </TouchableOpacity>
+
+          {/* Next */}
+          <Link href={"/information10"} style={styles.button}>
+            <Text style={styles.buttonText}>Next</Text>
+          </Link>
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 
@@ -32,35 +94,96 @@ export default Information9;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    height: "100%",
+    backgroundColor: "white",
     padding: 20,
   },
-  title: {
-    fontSize: 28,
-    fontWeight: "700",
-    color: MyColors.textColor,
-    marginBottom: 10,
-    textAlign: "center",
-  },
-  subtitle: {
+  topText: {
     fontSize: 16,
-    color: "#555",
-    textAlign: "center",
-    marginBottom: 30,
+    fontWeight: "regular",
+    color: MyColors.textColor3,
+    marginTop: 20,
+  },
+  questionText: {
+    fontSize: 12,
+    fontWeight: "regular",
+    color: MyColors.textColor,
+    marginTop: 4,
+    textTransform: "uppercase",
+  },
+
+  radioButton: {
+    width: 20,
+    height: 20,
+    borderWidth: 2,
+    borderRadius: 10,
+    borderColor: "black",
+    marginRight: 10,
+  },
+  radioButtonSelected: {
+    backgroundColor: "blue",
+  },
+  optionContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 10,
+    gap: 10,
+  },
+  mainOptionContainer: {
+    marginTop: 12,
+  },
+  mainOptionContainer2: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-around",
+    marginTop: 10,
   },
   button: {
     backgroundColor: MyColors.textColor,
     paddingVertical: 16,
     paddingHorizontal: 24,
     borderRadius: 100,
-    width: 200,
-    alignItems: "center",
+    width: 150,
   },
+  button2: {
+    borderWidth: 1,
+    borderColor: MyColors.textColor,
+    paddingVertical: 16,
+    paddingHorizontal: 24,
+    borderRadius: 100,
+    width: 150,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 8,
+  },
+
   buttonText: {
     color: "white",
+    textAlign: "center",
     fontSize: 16,
     fontWeight: "600",
+  },
+  subText: {
+    fontSize: 10,
+    fontWeight: "400",
+    color: MyColors.subTextColor,
+    marginBottom: 12,
+  },
+  scrollStyle: {
+    paddingBottom: 60,
+  },
+  backNextContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginTop: 60,
+  },
+  input: {
+    borderBottomWidth: 1,
+    borderBottomColor: MyColors.inputBorderColor,
+    padding: 16,
+    marginTop: 8,
+    color: MyColors.textColor3,
   },
 });

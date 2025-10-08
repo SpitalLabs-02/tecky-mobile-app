@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 
+=======
+// @ts-nocheck
+>>>>>>> Stashed changes
 import { responseAtom } from "@/atoms/responseAtom";
 import ProgessBar from "@/components/ProgessBar";
 import SingleResponse from "@/components/response/SingleResponse";
@@ -15,25 +19,43 @@ import {
     TouchableOpacity,
     View,
 } from "react-native";
+<<<<<<< Updated upstream
 
 
 const Information8 = () => {
   const router = useRouter();
 
   const [response, setResponses] = useAtom(responseAtom);
+=======
+
+const Information8 = () => {
+  const router = useRouter();
+       const [response, setResponses] = useAtom(responseAtom);
+ 
+>>>>>>> Stashed changes
 
   const questions = [
     {
       id: "1",
       text: "I want to acquire tech skills that can be applied to both personal and professional projects.",
       options: [1, 2, 3, 4, 5],
+<<<<<<< Updated upstream
       rowResponses: true,
+=======
+      rowResponses: true, 
+      
+>>>>>>> Stashed changes
     },
     {
       id: "2",
       text: "Advancing to leadership or specialized roles in the tech industry is a key career goal for me.",
       options: [1, 2, 3, 4, 5],
       rowResponses: true,
+<<<<<<< Updated upstream
+=======
+      extraText:
+        "On a scale of 1-5 (1 being the lowest and 5 the highest) kindly rank these statements in their order of correctness)",
+>>>>>>> Stashed changes
     },
     {
       id: "3",
@@ -61,7 +83,12 @@ const Information8 = () => {
     },
   ];
 
+<<<<<<< Updated upstream
  
+=======
+  
+
+>>>>>>> Stashed changes
   const handleBackButton = () => {
     router.push("/information7");
   };
@@ -82,7 +109,11 @@ const Information8 = () => {
           onChange={(answers) =>
             setResponses((prev) => ({ ...prev, ...answers }))
           }
+<<<<<<< Updated upstream
         
+=======
+          inputStyle={styles.input}
+>>>>>>> Stashed changes
         />
 
         {/* The back and next container */}
@@ -109,16 +140,34 @@ export default Information8;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: "100%",
     backgroundColor: "white",
     padding: 20,
   },
+  topText: {
+    fontSize: 16,
+    fontWeight: "regular",
+    color: MyColors.textColor3,
+    marginTop: 20,
+  },
   questionText: {
     fontSize: 12,
-    fontWeight: "400",
+    fontWeight: "regular",
     color: MyColors.textColor,
     marginTop: 4,
     textTransform: "uppercase",
+  },
+
+  radioButton: {
+    width: 20,
+    height: 20,
+    borderWidth: 2,
+    borderRadius: 10,
+    borderColor: "black",
+    marginRight: 10,
+  },
+  radioButtonSelected: {
+    backgroundColor: "blue",
   },
   optionContainer: {
     flexDirection: "row",
@@ -133,7 +182,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-around",
-    marginTop: 5,
+    marginTop: 10,
   },
   button: {
     backgroundColor: MyColors.textColor,
@@ -141,8 +190,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     borderRadius: 100,
     width: 150,
-    alignItems: "center",
-    justifyContent: "center",
   },
   button2: {
     borderWidth: 1,
@@ -156,19 +203,33 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     gap: 8,
   },
+
   buttonText: {
     color: "white",
     textAlign: "center",
     fontSize: 16,
     fontWeight: "600",
   },
+  subText: {
+    fontSize: 10,
+    fontWeight: "400",
+    color: MyColors.subTextColor,
+    marginBottom: 12,
+  },
   scrollStyle: {
-    paddingBottom: 20,
+    paddingBottom: 60,
   },
   backNextContainer: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingVertical: 16,
+    marginTop: 60,
+  },
+  input: {
+    borderBottomWidth: 1,
+    borderBottomColor: MyColors.inputBorderColor,
+    padding: 16,
+    marginTop: 8,
+    color: MyColors.textColor3,
   },
 });

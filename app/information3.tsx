@@ -4,6 +4,7 @@ import { MyColors } from "@/constants/Colors";
 import Feather from "@expo/vector-icons/Feather";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { Link, useRouter } from "expo-router";
+<<<<<<< Updated upstream
 import React, { useState } from "react";
 import {
     Image,
@@ -13,10 +14,23 @@ import {
     TextInput,
     TouchableOpacity,
     View,
+=======
+import { useAtom } from "jotai";
+import React, { useState } from "react";
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+>>>>>>> Stashed changes
 } from "react-native";
 
 const Information3 = () => {
   const router = useRouter();
+<<<<<<< Updated upstream
   // State that will handle the option selection
   const [multipleAnswer, setMultipleAnswer] = useState({});
   const [techApplication, setTechApplication] = useState("");
@@ -55,6 +69,50 @@ const Information3 = () => {
     });
   };
 
+=======
+  const [response, setResponses] = useAtom(responseAtom);
+  const [techApps, setTechApps] = useState(""); // <-- added state for input field
+
+  //  Added Text Field Area
+  // (WHAT ARE YOUR FAVORITE TECH APPLICATIONS?)
+  const renderTextField = () => (
+    <View style={{ marginBottom: 20 }}>
+      <Text style={styles.topText}>WHAT ARE YOUR FAVORITE TECH APPLICATIONS?</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Your answer"
+        placeholderTextColor={MyColors.subTextColor}
+        value={techApps}
+        onChangeText={setTechApps}
+      />
+    </View>
+  );
+
+  const questions = [
+    {
+      id: "1",
+      text: "I am fascinated by the potential of utilizing technology to transform human lives, businesses, industries, and societies.",
+      options: [1, 2, 3, 4, 5],
+      rowResponses: true,
+      extraText:
+        "On a scale of 1-5 (1 being the lowest and 5 the highest) kindly rank these statements in their order of correctness)",
+    },
+
+    {
+      id: "2",
+      text: "I enjoy learning and exploring new & emerging technologies, applying my creativity to developing new tech devices & gizmos, and proffering innovative solutions.",
+      options: [1, 2, 3, 4, 5],
+      rowResponses: true,
+    },
+    {
+      id: "3",
+      text: "I am passionate about using technology to address human, societal, and environmental challenges (real world problems).",
+      options: [1, 2, 3, 4, 5],
+      rowResponses: true,
+    },
+  ];
+
+>>>>>>> Stashed changes
   const handleBackButton = () => {
     router.push("/information2");
   };
@@ -69,6 +127,7 @@ const Information3 = () => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollStyle}
       >
+<<<<<<< Updated upstream
         {/* INPUT CONTAINER/SECTION */}
         <View style={{ marginTop: 20 }}>
           <Text style={styles.questionText}>
@@ -127,6 +186,19 @@ const Information3 = () => {
             </View>
           ))}
         </View>
+=======
+        {/* Added text input field here */}
+        {renderTextField()}
+
+        <SingleResponse
+          questions={questions}
+          initialAnswers={response}
+          onChange={(answers) =>
+            setResponses((prev) => ({ ...prev, ...answers }))
+          }
+          inputStyle={styles.input}
+        />
+>>>>>>> Stashed changes
 
         {/* The back and next container */}
         <View style={styles.backNextContainer}>
@@ -158,9 +230,9 @@ const styles = StyleSheet.create({
     marginTop: 30
   },
   topText: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: "regular",
-    color: MyColors.textColor3,
+    color: MyColors.textColor,
     marginTop: 20,
   },
   questionText: {

@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 import { responseAtom } from "@/atoms/responseAtom";
 import ProgessBar from "@/components/ProgessBar";
 import SingleResponse from "@/components/response/SingleResponse";
@@ -16,50 +16,44 @@ import {
     View,
 } from "react-native";
 
-const Information6 = () => {
+const Information13 = () => {
   const router = useRouter();
-<<<<<<< Updated upstream
- 
- const [response, setResponses] = useAtom(responseAtom);
-=======
-      const [response, setResponses] = useAtom(responseAtom);
->>>>>>> Stashed changes
+  const [response, setResponses] = useAtom(responseAtom);
 
   const questions = [
     {
       id: "1",
-      text: "I want to acquire tech skills that are currently trending in the industry.",
-      options: [1, 2, 3, 4, 5],
-      rowResponses: true,
+      text: "DO YOU LIKE TO CONNECT THINGS: LIKE JOINTS AND PLUG-INS?",
+      options: ["Yes", "Not Sure", "No"],
+      
     },
 
     {
       id: "2",
-      text: "Job security and stability are essential factors when choosing a tech skill.",
+      text: "I enjoy solving logical problems and puzzles.",
       options: [1, 2, 3, 4, 5],
-      rowResponses: true,
+      rowResponses: true, 
+      extraText:
+        "On a scale of 1-5 (1 being the lowest and 5 the highest) kindly rank these statements in their order of correctness)",
     },
     {
       id: "3",
-      text: "I am interested in tech skills that have a high potential for career advancement.",
+      text: "I am interested in building and creating things from scratch.",
       options: [1, 2, 3, 4, 5],
       rowResponses: true,
+      
     },
     {
       id: "4",
-      text: "I want to acquire tech skills that are widely recognized and respected in the industry.",
+      text: "I am comfortable with writing code and debugging errors.",
       options: [1, 2, 3, 4, 5],
       rowResponses: true,
     },
   ];
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 
   const handleBackButton = () => {
-    router.push("/information5");
+    router.push("/information12");
   };
 
   return (
@@ -72,21 +66,13 @@ const Information6 = () => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollStyle}
       >
-<<<<<<< Updated upstream
-         <SingleResponse
-=======
         <SingleResponse
->>>>>>> Stashed changes
           questions={questions}
           initialAnswers={response}
           onChange={(answers) =>
             setResponses((prev) => ({ ...prev, ...answers }))
           }
-<<<<<<< Updated upstream
-        
-=======
           inputStyle={styles.input}
->>>>>>> Stashed changes
         />
 
         {/* The back and next container */}
@@ -100,7 +86,7 @@ const Information6 = () => {
           </TouchableOpacity>
 
           {/* Next */}
-          <Link href={"/information7"} style={styles.button}>
+          <Link href={"/information14"} style={styles.button}>
             <Text style={styles.buttonText}>Next</Text>
           </Link>
         </View>
@@ -109,21 +95,19 @@ const Information6 = () => {
   );
 };
 
-export default Information6;
+export default Information13;
 
 const styles = StyleSheet.create({
   container: {
     height: "100%",
     backgroundColor: "white",
     padding: 20,
-    marginTop: 30
-    
   },
   topText: {
     fontSize: 16,
     fontWeight: "regular",
     color: MyColors.textColor3,
-    marginTop: 20,
+    marginTop: 20, 
   },
   questionText: {
     fontSize: 12,

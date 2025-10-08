@@ -17,6 +17,7 @@ import {
 } from "react-native";
 
 const Information5 = () => {
+<<<<<<< Updated upstream
   const router = useRouter();
 
   const [response, setResponses] = useAtom(responseAtom);
@@ -24,6 +25,14 @@ const Information5 = () => {
   const questions = [
     {
       id: "1",
+=======
+    const router = useRouter();
+    const [response, setResponses] = useAtom(responseAtom);
+
+  const questions = [
+    {
+      id: "1", 
+>>>>>>> Stashed changes
       text: "I am comfortable with learning complex tech skills.",
       options: [1, 2, 3, 4, 5],
       rowResponses: true,
@@ -40,15 +49,25 @@ const Information5 = () => {
       text: "I prefer learning tech skills that have a clear, step-by-step approach.",
       options: [1, 2, 3, 4, 5],
       rowResponses: true,
+<<<<<<< Updated upstream
       
     },
     {
       id: "4",
+=======
+    },
+    {
+      id:"4",
+>>>>>>> Stashed changes
       text: "Having a tech skill that is in high demand in the job market is crucial to me.",
       options: [1, 2, 3, 4, 5],
       rowResponses: true,
       extraText:
+<<<<<<< Updated upstream
         "OOn a scale of 1-5 (1 being the lowest and 5 the highest) kindly rank these statements in their order of correctness",
+=======
+        "On a scale of 1-5 (1 being the lowest and 5 the highest) kindly rank these statements in their order of correctness)",
+>>>>>>> Stashed changes
     },
   ];
 
@@ -74,9 +93,14 @@ const Information5 = () => {
           onChange={(answers) =>
             setResponses((prev) => ({ ...prev, ...answers }))
           }
+<<<<<<< Updated upstream
         
         />
 
+=======
+          inputStyle={styles.input}
+        />
+>>>>>>> Stashed changes
 
         {/* The back and next container */}
         <View style={styles.backNextContainer}>

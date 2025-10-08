@@ -18,14 +18,25 @@ import {
 
 const Information7 = () => {
   const router = useRouter();
+<<<<<<< Updated upstream
+=======
+       const [response, setResponses] = useAtom(responseAtom);
+ 
+>>>>>>> Stashed changes
 
   const [response, setResponses] = useAtom(responseAtom);
   
   const questions = [
     {
+<<<<<<< Updated upstream
       
       text: "ON A SCALE OF 1-5 (1 BEING THE LOWEST AND 5 THE HIGHEST) KINDLY RANK THESE STATEMENTS IN THEIR ORDER OF CORRECTNESS",
       
+=======
+      id: "0",
+      text: "ON A SCALE OF 1-5 (1 BEING THE LOWEST AND 5 THE HIGHEST) KINDLY RANK THESE STATEMENT IN THEIR ORDER OF CORRECTNESS",
+
+>>>>>>> Stashed changes
     },
     {
       id: "1",
@@ -54,7 +65,11 @@ const Information7 = () => {
     },
   ];
 
+<<<<<<< Updated upstream
  
+=======
+  
+>>>>>>> Stashed changes
 
   const handleBackButton = () => {
     router.push("/information6");
@@ -76,7 +91,11 @@ const Information7 = () => {
           onChange={(answers) =>
             setResponses((prev) => ({ ...prev, ...answers }))
           }
+<<<<<<< Updated upstream
         
+=======
+          inputStyle={styles.input}
+>>>>>>> Stashed changes
         />
 
         {/* The back and next container */}

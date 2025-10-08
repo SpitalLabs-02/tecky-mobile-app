@@ -35,5 +35,5 @@ export const MyColors = {
   progressTitleColor: '#1D2739',
   inactiveProgressColor: '#EEEEEE',
   progressTextColor: '#475367',
-  subTextColor: '#344B9F'
+  subTextColor: '#A5A5A5'
 }
