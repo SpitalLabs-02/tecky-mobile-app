@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { responseAtom } from "@/atoms/responseAtom";
 import ProgessBar from "@/components/ProgessBar";
-import MultipleResponse from "@/components/Responses/MultipleResponse";
+import SingleResponse from "@/components/response/SingleResponse";
 import { MyColors } from "@/constants/Colors";
 import { Link } from "expo-router";
 import { useAtom } from "jotai";
@@ -54,7 +54,7 @@ const Information = () => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollStyle}
       >
-        <MultipleResponse
+        <SingleResponse
           questions={questions}
           initialAnswers={response}
           onChange={(answers) =>
