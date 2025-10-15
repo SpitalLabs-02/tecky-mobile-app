@@ -68,7 +68,7 @@ router.push('/information')
         </View>
 
         {/* Child 2 */}
-        <Text style={[styles.durationText, {color: MyColors.textColor}]}>30 minutes</Text>
+        <Text style={[styles.durationText, {color: MyColors.textColor}]}>15 minutes</Text>
       </View>
 
       {/* Start Assessment button */}

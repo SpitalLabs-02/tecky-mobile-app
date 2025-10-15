@@ -1,7 +1,6 @@
-// @ts-nocheck
 import { responseAtom } from "@/atoms/responseAtom";
 import ProgessBar from "@/components/ProgessBar";
-import SingleResponse from "@/components/response/SingleResponse";
+import SingleResponse, { Question } from "@/components/response/SingleResponse";
 import { MyColors } from "@/constants/Colors";
 import Feather from "@expo/vector-icons/Feather";
 import { Link, useRouter } from "expo-router";
@@ -18,36 +17,32 @@ import {
 
 const Information3 = () => {
   const router = useRouter();
-
   const [response, setResponses] = useAtom(responseAtom);
-  
 
-  const questions = [
+  const questions: Question[] = [
     {
-      id: '1',
+      id: "1",
       text: "I am fascinated by the potential of utilizing technology to transform human lives, businesses, industries, and societies.",
       options: [1, 2, 3, 4, 5],
-      type: 'choice',
-      rowResponses: true
+      type: "choice",
+      rowResponses: true,
     },
 
     {
-      id: '2',
+      id: "2",
       text: "I enjoy learning and exploring new & emerging technologies, applying my creativity to developing new tech devices & gizmos, and proffering innovative solutions.",
       options: [1, 2, 3, 4, 5],
-      type: 'choice',
-      rowResponses: true
+      type: "choice",
+      rowResponses: true,
     },
     {
-      id: '3',
+      id: "3",
       text: "I am passionate about using technology to address human, societal, and environmental challenges (real world problems).",
       options: [1, 2, 3, 4, 5],
-      type: 'choice',
-      rowResponses: true
+      type: "choice",
+      rowResponses: true,
     },
   ];
-
-
 
   const handleBackButton = () => {
     router.push("/information2");
@@ -99,11 +94,12 @@ const styles = StyleSheet.create({
     height: "100%",
     backgroundColor: "white",
     padding: 20,
+    marginTop: 30,
   },
   topText: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: "regular",
-    color: MyColors.textColor3,
+    color: MyColors.textColor,
     marginTop: 20,
   },
   questionText: {

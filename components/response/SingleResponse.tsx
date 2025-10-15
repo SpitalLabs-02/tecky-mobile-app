@@ -10,7 +10,7 @@ import {
   View,
 } from "react-native";
 
-interface Question {
+export interface Question {
   id: string;
   text: string;
   options?: (string | number)[];

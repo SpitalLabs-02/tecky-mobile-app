@@ -19,7 +19,7 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack >
+      <Stack initialRouteName='information22'>
         <Stack.Screen name='index' options={{headerShown: false}} />
         <Stack.Screen name='how-it-works' options={{headerShown: false}} />
         <Stack.Screen name='information' options={{headerShown: false}} />
@@ -31,6 +31,20 @@ export default function RootLayout() {
         <Stack.Screen name='information7' options={{headerShown: false}} />
         <Stack.Screen name='information8' options={{headerShown: false}} />
         <Stack.Screen name='information9' options={{headerShown: false}} />
+        <Stack.Screen name='information10' options={{headerShown: false}} />
+        <Stack.Screen name='information11' options={{headerShown: false}} />
+        <Stack.Screen name='information12' options={{headerShown: false}} />
+        <Stack.Screen name='information13' options={{headerShown: false}} />
+        <Stack.Screen name='information14' options={{headerShown: false}} />
+        <Stack.Screen name='information15' options={{headerShown: false}} />
+        <Stack.Screen name='information16' options={{headerShown: false}} />
+        <Stack.Screen name='information17' options={{headerShown: false}} />
+        <Stack.Screen name='information18' options={{headerShown: false}} />
+        <Stack.Screen name='information19' options={{headerShown: false}} />
+        <Stack.Screen name='information20' options={{headerShown: false}} />
+        <Stack.Screen name='information21' options={{headerShown: false}} />
+        <Stack.Screen name='information22' options={{headerShown: false}} />
+        <Stack.Screen name='information23' options={{headerShown: false}} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>

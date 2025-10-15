@@ -1,12 +1,14 @@
 // @ts-nocheck
 import { responseAtom } from "@/atoms/responseAtom";
+import ConfirmModal from "@/components/ConfirmModal";
+import CustomLoader from "@/components/CustomLoader";
 import ProgessBar from "@/components/ProgessBar";
 import SingleResponse from "@/components/response/SingleResponse";
 import { MyColors } from "@/constants/Colors";
 import Feather from "@expo/vector-icons/Feather";
-import { Link, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 import { useAtom } from "jotai";
-import React from "react";
+import React, { useState } from "react";
 import {
   Image,
   ScrollView,
@@ -16,48 +18,50 @@ import {
   View,
 } from "react-native";
 
-const Information4 = () => {
+const Information22 = () => {
   const router = useRouter();
   const [response, setResponses] = useAtom(responseAtom);
+  const [isConfirmModal, setIsConfirmModal] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const questions = [
     {
       id: "1",
-      text: "I am interested in understanding how technology can improve people's lives and experiences, thereby enabling to make positive impacts or changes in the Society",
-      options: ['Very relaxed', 'Not Relaxed', 'Relaxed', 'Not very relaxed', 'Neutral'],
-      // rowResponses: true,
+      text: "I enjoy collaborating with others on telling stories",
+      options: [1, 2, 3, 4, 5],
+      rowResponses: true,
     },
 
     {
       id: "2",
-      text: "I enjoy collaborating with others to develop innovative tech solutions.",
+      text: "I am interested in using image capture and designs to tell stories and convey messages.",
       options: [1, 2, 3, 4, 5],
       rowResponses: true,
     },
     {
       id: "3",
-      text: "I am willing to dedicate a significant amount of time to learn a new tech skill.",
-      options: [1, 2, 3, 4, 5],
-      rowResponses: true,
-      extraText:
-        "On a scale of 1-5 (1 being the lowest and 5 the highest) kindly rank these statements in their order of correctness)",
+
+      text: "ANY OTHER THING YOU WOULD TO SHARE WITH US BORDERING ON TECH?",
     },
     {
       id: "4",
-      text: "I prefer tech skills with a gentle learning curve.",
-      options: [1, 2, 3, 4, 5],
-      rowResponses: true,
-    },
-     {
-      id: "5",
-      inputTitle: "NAME",
+
       type: "input",
     },
   ];
 
-
   const handleBackButton = () => {
-    router.push("/information3");
+    router.push("/information21");
+  };
+
+  // Handle Submit function
+  const handleSubmit = () => {
+    setLoading(true);
+    setIsConfirmModal(false);
+    setTimeout(() => {
+      setLoading(false);
+      router.push("/information23");
+    }, 5000);
   };
 
   return (
@@ -90,23 +94,35 @@ const Information4 = () => {
           </TouchableOpacity>
 
           {/* Next */}
-          <Link href={"/information5"} style={styles.button}>
-            <Text style={styles.buttonText}>Next</Text>
-          </Link>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => setIsConfirmModal(true)}
+          >
+            <Text style={styles.buttonText}>Submit</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
+      {isConfirmModal && (
+        <ConfirmModal
+          isVisible={isConfirmModal}
+          title="Are you sure?"
+          description="Kindly cross check properly before submitting the assessment."
+          onCancel={() => setIsConfirmModal(false)}
+          onConfirm={handleSubmit}
+        />
+      )}
+      {loading && <CustomLoader isVisible={loading} />}
     </View>
   );
 };
 
-export default Information4;
+export default Information22;
 
 const styles = StyleSheet.create({
   container: {
     height: "100%",
     backgroundColor: "white",
     padding: 20,
-    marginTop: 20
   },
   topText: {
     fontSize: 16,

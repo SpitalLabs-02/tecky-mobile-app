@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 import { responseAtom } from "@/atoms/responseAtom";
 import ProgessBar from "@/components/ProgessBar";
 import SingleResponse from "@/components/response/SingleResponse";
@@ -8,56 +8,50 @@ import { Link, useRouter } from "expo-router";
 import { useAtom } from "jotai";
 import React from "react";
 import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+    Image,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
 } from "react-native";
 
-const Information4 = () => {
+const Information18 = () => {
   const router = useRouter();
   const [response, setResponses] = useAtom(responseAtom);
 
   const questions = [
     {
       id: "1",
-      text: "I am interested in understanding how technology can improve people's lives and experiences, thereby enabling to make positive impacts or changes in the Society",
-      options: ['Very relaxed', 'Not Relaxed', 'Relaxed', 'Not very relaxed', 'Neutral'],
-      // rowResponses: true,
+      text: "I enjoy creating and editing content for various marketing channels.",
+      options: [1, 2, 3, 4, 5],
+      rowResponses: true, 
+           
     },
 
     {
       id: "2",
-      text: "I enjoy collaborating with others to develop innovative tech solutions.",
+      text: "I enjoy analysing buying metrics, tends, and patterns for the optimizing & mobilising interest",
       options: [1, 2, 3, 4, 5],
       rowResponses: true,
+      
+      
     },
     {
       id: "3",
-      text: "I am willing to dedicate a significant amount of time to learn a new tech skill.",
-      options: [1, 2, 3, 4, 5],
-      rowResponses: true,
-      extraText:
-        "On a scale of 1-5 (1 being the lowest and 5 the highest) kindly rank these statements in their order of correctness)",
+      text: "DO YOU DESIRE TO SOLVE BUSINESS CHALLENGES USING NUMBERS AND PROCESSES?",
+      options: ["Yes", "Not Sure", "No"],
+            
     },
     {
       id: "4",
-      text: "I prefer tech skills with a gentle learning curve.",
-      options: [1, 2, 3, 4, 5],
-      rowResponses: true,
-    },
-     {
-      id: "5",
-      inputTitle: "NAME",
-      type: "input",
+      text: "ON A SCALE OF 1-5 (1 BEING THE LOWEST AND 5 THE HIGHEST) KINDLY RANK THESE STATEMENTS IN THEIR ORDER OF CORRECTNESS", 
     },
   ];
 
 
   const handleBackButton = () => {
-    router.push("/information3");
+    router.push("/information17");
   };
 
   return (
@@ -90,7 +84,7 @@ const Information4 = () => {
           </TouchableOpacity>
 
           {/* Next */}
-          <Link href={"/information5"} style={styles.button}>
+          <Link href={"/information19"} style={styles.button}>
             <Text style={styles.buttonText}>Next</Text>
           </Link>
         </View>
@@ -99,20 +93,19 @@ const Information4 = () => {
   );
 };
 
-export default Information4;
+export default Information18;
 
 const styles = StyleSheet.create({
   container: {
     height: "100%",
     backgroundColor: "white",
     padding: 20,
-    marginTop: 20
   },
   topText: {
     fontSize: 16,
     fontWeight: "regular",
     color: MyColors.textColor3,
-    marginTop: 20,
+    marginTop: 20, 
   },
   questionText: {
     fontSize: 12,

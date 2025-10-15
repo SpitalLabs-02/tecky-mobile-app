@@ -1,10 +1,12 @@
 // @ts-nocheck
+import { responseAtom } from "@/atoms/responseAtom";
 import ProgessBar from "@/components/ProgessBar";
+import SingleResponse from "@/components/response/SingleResponse";
 import { MyColors } from "@/constants/Colors";
 import Feather from "@expo/vector-icons/Feather";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { Link, useRouter } from "expo-router";
-import React, { useState } from "react";
+import { useAtom } from "jotai";
+import React from "react";
 import {
   Image,
   ScrollView,
@@ -16,46 +18,42 @@ import {
 
 const Information7 = () => {
   const router = useRouter();
-  // State that will handle the option selection
-  const [multipleAnswer, setMultipleAnswer] = useState({});
-
+       const [response, setResponses] = useAtom(responseAtom);
+  
   const questions = [
     {
+      id: "0",
+      text: "ON A SCALE OF 1-5 (1 BEING THE LOWEST AND 5 THE HIGHEST) KINDLY RANK THESE STATEMENT IN THEIR ORDER OF CORRECTNESS",
+
+    },
+    {
+      id: "1",
       text: "Having a tech skill that can be applied across multiple industries is important to me.",
       options: [1, 2, 3, 4, 5],
+      rowResponses: true,
     },
 
     {
+      id: "2",
       text: "I prefer tech skills that can be used in various contexts.",
       options: [1, 2, 3, 4, 5],
+      rowResponses: true,
     },
     {
+      id: "3",
       text: "Acquiring tech skills that can be transferred to different domains is valuable to me.",
       options: [1, 2, 3, 4, 5],
+      rowResponses: true,
     },
     {
+      id: "4",
       text: "I am interested in tech skills that can be adapted to new and emerging technologies.",
       options: [1, 2, 3, 4, 5],
+      rowResponses: true,
     },
   ];
 
-  const handleSelect = (questionIndex: number, option: string) => {
-    setMultipleAnswer((previous) => {
-      const currentSelection = previous[questionIndex] || [];
-
-      if (currentSelection.includes(option)) {
-        return {
-          ...previous,
-          [questionIndex]: currentSelection.filter((ans) => ans !== option),
-        };
-      } else {
-        return {
-          ...previous,
-          [questionIndex]: [...currentSelection, option],
-        };
-      }
-    });
-  };
+  
 
   const handleBackButton = () => {
     router.push("/information6");
@@ -71,50 +69,14 @@ const Information7 = () => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollStyle}
       >
-        {/* QUESTION AND OPTION SECTION */}
-        <View style={{ marginTop: 20 }}>
-          {questions.map((data, index) => (
-            <View key={index} style={styles.mainOptionContainer}>
-              {index === 0 && (
-                <Text style={styles.questionText}>
-                  On a scale of 1-5 (1 being the lowest and 5 the highest) kindly rank these statements in their order of correctness
-                </Text>
-              )}
-              <Text style={[styles.questionText, { textTransform: "none" }]}>
-                {data.text}
-                {/* {index + 1}. {data.text} */}
-              </Text>
-
-              <View style={styles.mainOptionContainer2}>
-                {data.options.map((option, j) => {
-                  const selected = multipleAnswer[index]?.includes(option);
-
-                  return (
-                    <TouchableOpacity
-                      key={j}
-                      onPress={() => handleSelect(index, option)}
-                      style={[
-                        styles.optionContainer,
-                        { flexDirection: "column", gap: 5 },
-                      ]}
-                    >
-                      <MaterialCommunityIcons
-                        name={
-                          selected
-                            ? "checkbox-intermediate"
-                            : "checkbox-blank-outline"
-                        }
-                        size={24}
-                        color="black"
-                      />
-                      <Text>{option}</Text>
-                    </TouchableOpacity>
-                  );
-                })}
-              </View>
-            </View>
-          ))}
-        </View>
+         <SingleResponse
+          questions={questions}
+          initialAnswers={response}
+          onChange={(answers) =>
+            setResponses((prev) => ({ ...prev, ...answers }))
+          }
+          inputStyle={styles.input}
+        />
 
         {/* The back and next container */}
         <View style={styles.backNextContainer}>
@@ -143,6 +105,7 @@ const styles = StyleSheet.create({
     height: "100%",
     backgroundColor: "white",
     padding: 20,
+    marginTop: 30
   },
   topText: {
     fontSize: 16,

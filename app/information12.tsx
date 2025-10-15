@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 import { responseAtom } from "@/atoms/responseAtom";
 import ProgessBar from "@/components/ProgessBar";
 import SingleResponse from "@/components/response/SingleResponse";
@@ -16,48 +16,42 @@ import {
   View,
 } from "react-native";
 
-const Information4 = () => {
+const Information12 = () => {
   const router = useRouter();
   const [response, setResponses] = useAtom(responseAtom);
 
   const questions = [
     {
       id: "1",
-      text: "I am interested in understanding how technology can improve people's lives and experiences, thereby enabling to make positive impacts or changes in the Society",
-      options: ['Very relaxed', 'Not Relaxed', 'Relaxed', 'Not very relaxed', 'Neutral'],
-      // rowResponses: true,
+      text: "I'm interested in understanding human behavior and designing intuitive experiences.",
+      options: [1, 2, 3, 4, 5],
+      rowResponses: true,
     },
 
     {
       id: "2",
-      text: "I enjoy collaborating with others to develop innovative tech solutions.",
+      text: "I enjoy sketching and brainstorming ideas for design concepts.",
       options: [1, 2, 3, 4, 5],
       rowResponses: true,
     },
     {
       id: "3",
-      text: "I am willing to dedicate a significant amount of time to learn a new tech skill.",
+      text: "I am interested in designing for accessibility and inclusivity.",
       options: [1, 2, 3, 4, 5],
       rowResponses: true,
-      extraText:
-        "On a scale of 1-5 (1 being the lowest and 5 the highest) kindly rank these statements in their order of correctness)",
+      
     },
     {
       id: "4",
-      text: "I prefer tech skills with a gentle learning curve.",
+      text: "I enjoy creating interactive designs and prototypes.",
       options: [1, 2, 3, 4, 5],
       rowResponses: true,
-    },
-     {
-      id: "5",
-      inputTitle: "NAME",
-      type: "input",
     },
   ];
 
 
   const handleBackButton = () => {
-    router.push("/information3");
+    router.push("/information11");
   };
 
   return (
@@ -90,7 +84,7 @@ const Information4 = () => {
           </TouchableOpacity>
 
           {/* Next */}
-          <Link href={"/information5"} style={styles.button}>
+          <Link href={"/information13"} style={styles.button}>
             <Text style={styles.buttonText}>Next</Text>
           </Link>
         </View>
@@ -99,20 +93,19 @@ const Information4 = () => {
   );
 };
 
-export default Information4;
+export default Information12;
 
 const styles = StyleSheet.create({
   container: {
     height: "100%",
     backgroundColor: "white",
     padding: 20,
-    marginTop: 20
   },
   topText: {
     fontSize: 16,
     fontWeight: "regular",
     color: MyColors.textColor3,
-    marginTop: 20,
+    marginTop: 20, 
   },
   questionText: {
     fontSize: 12,
