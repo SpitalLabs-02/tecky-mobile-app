@@ -18,14 +18,10 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === 'white' ? DarkTheme : DefaultTheme}>
-<<<<<<< Updated upstream
-      <Stack initialRouteName='index'>
-=======
-      <Stack >
->>>>>>> Stashed changes
-        <Stack.Screen name='index' options={{headerShown: false}} />
-        <Stack.Screen name='how-it-works' options={{headerShown: false}} />
+    <ThemeProvider value={colorScheme === 'light' ? DarkTheme : DefaultTheme}>
+      <Stack>
+       <Stack.Screen name="index" options={{ headerShown: false }} />
+       <Stack.Screen name='how-it-works' options={{headerShown: false}} />
         <Stack.Screen name='information' options={{headerShown: false}} />
         <Stack.Screen name='information2' options={{headerShown: false}} />
         <Stack.Screen name='information3' options={{headerShown: false}} />
@@ -49,7 +45,7 @@ export default function RootLayout() {
         <Stack.Screen name='information21' options={{headerShown: false}} />
         <Stack.Screen name='information22' options={{headerShown: false}} />
         <Stack.Screen name='information23' options={{headerShown: false}} />
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />

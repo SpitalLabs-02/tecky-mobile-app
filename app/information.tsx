@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 import ProgessBar from "@/components/ProgessBar";
 import { MyColors } from "@/constants/Colors";
 import Fontisto from "@expo/vector-icons/Fontisto";
