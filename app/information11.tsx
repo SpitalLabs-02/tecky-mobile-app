@@ -16,45 +16,55 @@ import {
   View,
 } from "react-native";
 
-const Information4 = () => {
+const Information8 = () => {
   const router = useRouter();
+
   const [response, setResponses] = useAtom(responseAtom);
 
   const questions = [
+  {
+      id: '1',
+      text: "HOW RELAXED ARE YOU WORKING WITH PATTERNS AND DESIGNS?",
+      options: ["Very Relaxed", "Relaxed", "Not Relaxed", "Not Very Relaxed/Tensed", "Neutral"],
+      type: 'choice',
+      extraText: "ON A SCALE OF 1-5 (1 BEING THE LOWEST AND 5 THE HIGHEST) KINDLY RANK THESE STATEMENTS IN THEIR ORDER OF CORRECTNESS)",
+    },
     {
-      id: "1",
-      text: "I am interested in understanding how technology can improve people's lives and experiences, thereby enabling to make positive impacts or changes in the Society",
+      id: '2',
+      text: "I have a keen eye for color, typography, and composition.",
       options: [1, 2, 3, 4, 5],
       type: 'choice',
-      rowResponses: true,
+      rowResponses: true
     },
-
     {
-      id: "2",
-      text: "I enjoy collaborating with others to develop innovative tech solutions.",
+      id: '3',
+      text: "I enjoy creating visually appealing and user-friendly interfaces.",
       options: [1, 2, 3, 4, 5],
       type: 'choice',
-      rowResponses: true,
-    },
-    {
-      id: "3",
-      text: "I am willing to dedicate a significant amount of time to learn a new tech skill.",
-      options: [1, 2, 3, 4, 5],
-      rowResponses: true,
-      extraText:
-        "On a scale of 1-5 (1 being the lowest and 5 the highest) kindly rank these statements in their order of correctness)",
-    },
-    {
-      id: "4",
-      text: "I prefer tech skills with a gentle learning curve.",
-      options: [1, 2, 3, 4, 5],
-      rowResponses: true,
+      rowResponses: true
     },
   ];
 
+  const handleSelect = (questionIndex: number, option: string) => {
+    setMultipleAnswer((previous) => {
+      const currentSelection = previous[questionIndex] || [];
 
-  const handleBackButton = () => {
-    router.push("/information3");
+      if (currentSelection.includes(option)) {
+        return {
+          ...previous,
+          [questionIndex]: currentSelection.filter((ans) => ans !== option),
+        };
+      } else {
+        return {
+          ...previous,
+          [questionIndex]: [...currentSelection, option],
+        };
+      }
+    });
+  };
+
+ const handleBackButton = () => {
+    router.push("/information10");
   };
 
   return (
@@ -87,7 +97,7 @@ const Information4 = () => {
           </TouchableOpacity>
 
           {/* Next */}
-          <Link href={"/information5"} style={styles.button}>
+          <Link href={"/information12"} style={styles.button}>
             <Text style={styles.buttonText}>Next</Text>
           </Link>
         </View>
@@ -96,7 +106,7 @@ const Information4 = () => {
   );
 };
 
-export default Information4;
+export default Information8;
 
 const styles = StyleSheet.create({
   container: {

@@ -16,45 +16,76 @@ import {
   View,
 } from "react-native";
 
-const Information4 = () => {
+const Information8 = () => {
   const router = useRouter();
+
   const [response, setResponses] = useAtom(responseAtom);
 
   const questions = [
     {
-      id: "1",
-      text: "I am interested in understanding how technology can improve people's lives and experiences, thereby enabling to make positive impacts or changes in the Society",
+      id: '1',
+      text: "I enjoy learning new programming languages and frameworks.",
       options: [1, 2, 3, 4, 5],
       type: 'choice',
-      rowResponses: true,
+      rowResponses: true
     },
-
     {
-      id: "2",
-      text: "I enjoy collaborating with others to develop innovative tech solutions.",
+      id: '2',
+      text: "Advancing to leadership or specialized roles in the tech industry is a key career goal for me.",
       options: [1, 2, 3, 4, 5],
       type: 'choice',
-      rowResponses: true,
+      rowResponses: true
     },
     {
-      id: "3",
-      text: "I am willing to dedicate a significant amount of time to learn a new tech skill.",
+      id: '3',
+      text: "Continuous learning and professional development are essential for my tech career.",
       options: [1, 2, 3, 4, 5],
-      rowResponses: true,
-      extraText:
-        "On a scale of 1-5 (1 being the lowest and 5 the highest) kindly rank these statements in their order of correctness)",
+      type: 'choice',
+      rowResponses: true
     },
     {
-      id: "4",
-      text: "I prefer tech skills with a gentle learning curve.",
+      id: '4',
+      text: "Acquiring tech skills that can lead to career growth and advancement is crucial to me.",
       options: [1, 2, 3, 4, 5],
-      rowResponses: true,
+      type: 'choice',
+      rowResponses: true
+    },
+    {
+      id: '5',
+      text: "I am interested in tech skills that can be applied to entrepreneurial or startup ventures.",
+      options: [1, 2, 3, 4, 5],
+      type: 'choice',
+      rowResponses: true
+    },
+    {
+      id: '6',
+      text: "I want to acquire tech skills that can be recognized and respected by industry leaders.",
+      options: [1, 2, 3, 4, 5],
+      type: 'choice',
+      rowResponses: true
     },
   ];
 
+  const handleSelect = (questionIndex: number, option: string) => {
+    setMultipleAnswer((previous) => {
+      const currentSelection = previous[questionIndex] || [];
 
-  const handleBackButton = () => {
-    router.push("/information3");
+      if (currentSelection.includes(option)) {
+        return {
+          ...previous,
+          [questionIndex]: currentSelection.filter((ans) => ans !== option),
+        };
+      } else {
+        return {
+          ...previous,
+          [questionIndex]: [...currentSelection, option],
+        };
+      }
+    });
+  };
+
+ const handleBackButton = () => {
+    router.push("/information13");
   };
 
   return (
@@ -87,7 +118,7 @@ const Information4 = () => {
           </TouchableOpacity>
 
           {/* Next */}
-          <Link href={"/information5"} style={styles.button}>
+          <Link href={"/information15"} style={styles.button}>
             <Text style={styles.buttonText}>Next</Text>
           </Link>
         </View>
@@ -96,7 +127,7 @@ const Information4 = () => {
   );
 };
 
-export default Information4;
+export default Information8;
 
 const styles = StyleSheet.create({
   container: {

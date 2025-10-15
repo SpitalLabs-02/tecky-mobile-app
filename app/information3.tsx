@@ -20,11 +20,16 @@ const Information3 = () => {
   const router = useRouter();
 
   const [response, setResponses] = useAtom(responseAtom);
-  
+
 
   const questions = [
     {
       id: '1',
+      inputTitle: "WHAT ARE YOUR FAVORITE TECH APPLICATIONS?",
+      type: "input",
+    },
+    {
+      id: '2',
       text: "I am fascinated by the potential of utilizing technology to transform human lives, businesses, industries, and societies.",
       options: [1, 2, 3, 4, 5],
       type: 'choice',
@@ -32,22 +37,20 @@ const Information3 = () => {
     },
 
     {
-      id: '2',
+      id: '3',
       text: "I enjoy learning and exploring new & emerging technologies, applying my creativity to developing new tech devices & gizmos, and proffering innovative solutions.",
       options: [1, 2, 3, 4, 5],
       type: 'choice',
       rowResponses: true
     },
     {
-      id: '3',
+      id: '4',
       text: "I am passionate about using technology to address human, societal, and environmental challenges (real world problems).",
       options: [1, 2, 3, 4, 5],
       type: 'choice',
       rowResponses: true
     },
   ];
-
-
 
   const handleBackButton = () => {
     router.push("/information2");

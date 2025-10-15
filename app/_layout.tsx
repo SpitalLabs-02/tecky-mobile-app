@@ -31,6 +31,15 @@ export default function RootLayout() {
         <Stack.Screen name='information7' options={{headerShown: false}} />
         <Stack.Screen name='information8' options={{headerShown: false}} />
         <Stack.Screen name='information9' options={{headerShown: false}} />
+        <Stack.Screen name='information10' options={{headerShown: false}} />
+        <Stack.Screen name='information11' options={{headerShown: false}} />
+        <Stack.Screen name='information12' options={{headerShown: false}} />
+        <Stack.Screen name='information13' options={{headerShown: false}} />
+        <Stack.Screen name='information14' options={{headerShown: false}} />
+        <Stack.Screen name='information15' options={{headerShown: false}} />
+        <Stack.Screen name='information16' options={{headerShown: false}} />
+        <Stack.Screen name='information17' options={{headerShown: false}} />
+        <Stack.Screen name='information18' options={{headerShown: false}} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
