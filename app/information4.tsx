@@ -24,8 +24,8 @@ const Information4 = () => {
     {
       id: "1",
       text: "I am interested in understanding how technology can improve people's lives and experiences, thereby enabling to make positive impacts or changes in the Society",
-      options: [1, 2, 3, 4, 5],
-      rowResponses: true,
+      options: ['Very relaxed', 'Not Relaxed', 'Relaxed', 'Not very relaxed', 'Neutral'],
+      // rowResponses: true,
     },
 
     {
@@ -47,6 +47,11 @@ const Information4 = () => {
       text: "I prefer tech skills with a gentle learning curve.",
       options: [1, 2, 3, 4, 5],
       rowResponses: true,
+    },
+     {
+      id: "5",
+      inputTitle: "NAME",
+      type: "input",
     },
   ];
 
