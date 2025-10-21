@@ -8,12 +8,12 @@ import { Link, useRouter } from "expo-router";
 import { useAtom } from "jotai";
 import React from "react";
 import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+    Image,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
 } from "react-native";
 
 const Information7 = () => {
@@ -105,6 +105,7 @@ const styles = StyleSheet.create({
     height: "100%",
     backgroundColor: "white",
     padding: 20,
+    paddingTop: 60,
     marginTop: 30
   },
   topText: {

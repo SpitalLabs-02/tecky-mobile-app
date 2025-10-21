@@ -101,8 +101,9 @@ const styles = StyleSheet.create({
   container: {
     height: "100%",
     backgroundColor: "white",
-    padding: 20,
-  },
+    padding: 20,paddingTop: 60,
+  }, 
+    
   topText: {
     fontSize: 16,
     fontWeight: "regular",

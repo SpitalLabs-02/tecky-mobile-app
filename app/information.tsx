@@ -63,54 +63,7 @@ const Information = () => {
           inputStyle={styles.input}
         />
 
-        {/* <View style={styles.inputContainer}>
-          <Text style={styles.questionText}>NAME</Text>
-
-          <TextInput
-            placeholder="Enter full name"
-            style={styles.input}
-            keyboardType="default"
-            value={fullName}
-            onChangeText={setFullName}
-          />
-
-          <Text style={styles.questionText}>EMAIL</Text>
-
-          <TextInput
-            placeholder="Enter email address"
-            style={styles.input}
-            keyboardType="email-address"
-            value={email}
-            onChangeText={setEmail}
-          />
-        </View>
-
-        {questions.map((data, index) => (
-          <View key={index} style={styles.mainOptionContainer}>
-            <Text style={styles.questionText}>
-              {data.text}
-              
-            </Text>
-            {data.options.map((option, j) => {
-              const selected = singleAnswer[index] === option;
-
-              return (
-                <TouchableOpacity
-                  key={j}
-                  onPress={() => handleSelect(index, option)}
-                  style={styles.optionContainer}
-                >
-                  <Fontisto
-                    name={selected ? "radio-btn-active" : "radio-btn-passive"}
-                    size={18}
-                    color="black"
-                  />
-                  <Text>{option}</Text>
-                </TouchableOpacity>
-              );
-            })}
-          </View>
-        ))} */}
+     
 
         <Link href={"/information2"} style={styles.button}>
           <Text style={styles.buttonText}>Next</Text>
@@ -127,6 +80,7 @@ const styles = StyleSheet.create({
     height: "100%",
     backgroundColor: "white",
     padding: 20,
+    paddingTop: 60,
     marginTop: 20
   },
   topText: {
