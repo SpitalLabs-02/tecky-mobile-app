@@ -1,10 +1,12 @@
 // @ts-nocheck
+import { multipleResponse } from "@/atoms/responseAtom";
 import ProgessBar from "@/components/ProgessBar";
 import { MyColors } from "@/constants/Colors";
 import Feather from "@expo/vector-icons/Feather";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { Link, useRouter } from "expo-router";
-import React, { useState } from "react";
+import { useAtom } from "jotai";
+import React, { useEffect, useState } from "react";
 import {
   Image,
   ScrollView,
@@ -17,7 +19,20 @@ import {
 const Information2 = () => {
   const router = useRouter();
   // State that will handle the option selection
-  const [multipleAnswer, setMultipleAnswer] = useState({});
+  const [response, setResponse] = useAtom(multipleResponse)
+  const [multipleAnswer, setMultipleAnswer] = useState(response || {});
+
+  // Update atom whenever local state changes
+  useEffect(()=>{
+    setResponse(multipleAnswer);
+  }, [multipleAnswer]);
+
+  // Restore selections from atom when returning to this screen
+  useEffect(()=>{
+    if (response && Object.keys(response).length > 0) {
+      setMultipleAnswer(response)
+    }
+  }, [])
 
   const questions = [
     {
